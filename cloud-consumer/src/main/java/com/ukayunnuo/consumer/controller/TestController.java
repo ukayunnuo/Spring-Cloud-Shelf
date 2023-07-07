@@ -1,11 +1,9 @@
 package com.ukayunnuo.consumer.controller;
 
+import com.ukayunnuo.commons.TestDemoDto;
 import com.ukayunnuo.openfeign.TestApi;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 
@@ -37,6 +35,10 @@ public class TestController {
     @GetMapping("setTestApi2/{param}")
     public String setTestApi2(@PathVariable String param){
         return testApi.apiTest2(param);
+    }
+    @PostMapping("postTest")
+    public TestDemoDto postTest(@RequestBody TestDemoDto param){
+        return testApi.postTest(param);
     }
 
 }
