@@ -1,0 +1,11 @@
+
+
+### 调用测试
+
+GET http://localhost:8082/consumer/test/setTestApi
+
+### 调用测试
+
+GET http://localhost:8082/consumer/test/setTestApi2/调用测试
+
+

@@ -1,0 +1,16 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: cloud-produce
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+
+logging:
+  config: classpath:logback.xml
+
+feign:
+  hystrix:
+    enabled: true

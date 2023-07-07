@@ -1,0 +1,17 @@
+server:
+  port: 8082
+
+spring:
+  application:
+    name: cloud-consumer
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+
+logging:
+  config: classpath:logback.xml
+
+feign:
+  hystrix:
+    enabled: true
+  url: http://localhost:8081
