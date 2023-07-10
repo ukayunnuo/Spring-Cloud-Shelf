@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <configuration scan="true" scanPeriod="10 seconds" debug="false">
 
-    <statusListener class="ch.qos.logback.core.status.OnConsoleStatusListener"/>
+    <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+
+    <statusListener class="ch.qos.logback.core.status.NopStatusListener" />
 
     <conversionRule conversionWord="clr" converterClass="org.springframework.boot.logging.logback.ColorConverter"/>
     <conversionRule conversionWord="wex"
@@ -9,19 +11,14 @@
     <conversionRule conversionWord="wEx"
                     converterClass="org.springframework.boot.logging.logback.ExtendedWhitespaceThrowableProxyConverter"/>
 
-
-    <property name="CONSOLE_LOG_PATTERN"
-              value="%clr(%d{${LOG_DATEFORMAT_PATTERN:-yyyy-MM-dd HH:mm:ss.SSS}}){faint} %clr(${PID:- }){magenta} %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %line %clr(:){faint} %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}"/>
-
     <property name="FILE_LOG_PATTERN" value="%d ${PID:- } %-5level --- [%t] %-33.33logger{32} %line : %m%n"/>
 
     <property name="LOG_HOME" value="spring-cloud-shelf-log"/>
-    <property name="LOG_NAME" value="cloud-consumer-log"/>
+    <property name="LOG_NAME" value="cloud-produce-log"/>
     <property name="LOG_PATH" value="${LOG_HOME}/${LOG_NAME}"/>
 
     <!-- 日志输出：ConsoleAppender-控制台输出 -->
-    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
-        <!-- encoder的class属性默认值为PatternLayoutEncoder -->
+    <appender name="Console" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
             <pattern>${CONSOLE_LOG_PATTERN}</pattern>
         </encoder>
@@ -68,7 +65,7 @@
     <logger name="com.ukayunnuo" level="DEBUG"/>
     <root>
         <level value="INFO"/>
-        <appender-ref ref="STDOUT"/>
+        <appender-ref ref="Console"/>
         <appender-ref ref="FILE_INFO"/>
         <appender-ref ref="FILE_ERROR"/>
     </root>
